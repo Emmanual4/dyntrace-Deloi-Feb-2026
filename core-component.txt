@@ -1,0 +1,10 @@
+1.OneAgent
+2.ActiveGate
+	-Environment ActiveGate
+	-Cluster ActiveGate
+	-Synthetic ActiveGate
+3.Dynatrace Clustre
+4.Davis AI
+5.Smartscape
+
+Application=>OneAgent=>ActivateGate=>Dynatrace=>Dravis AI=>Dashboard
