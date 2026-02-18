@@ -1,0 +1,8 @@
+1.sudo apt update
+2.sudo apt install apache2 -y
+3.sudo systemctl start apache2
+4.sudo systemctl restart apache2
+
+sudo systemctl stop oneagent
+sudo systemctl status oneagent
+sudo systemctl start oneagent

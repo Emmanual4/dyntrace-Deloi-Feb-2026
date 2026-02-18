@@ -1,0 +1,39 @@
+1.FUll-Stack
+	Infrastructure
+	Process
+	Code-Level tracing
+	Service-flow
+2.Infrastructure Only
+	CPU,Memory,Disk
+	No code tracing
+3.Discovery mode
+	Detect environment
+	No heavy monitoring
+
+
+chmod +x Dynatrace-OneAgent-Linux-x86-1.331.39.20260206-150338.sh
+
+sudo ./Dynatrace-OneAgent-Linux-x86-1.331.39.20260206-150338.sh 
+
+Infrastructure Only
+sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --set-monitoring-mode=infra-only --restart-service
+sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --get-monitoring-mode
+
+FUll-Stack
+sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --set-monitoring-mode=full-stack
+sudo systemctl stop oneagent
+
+sudo systemctl restart oneagent
+
+
+pip3 install gunicorn
+sudo systemctl stop oneagent
+sudo systemctl status oneagent
+sudo systemctl start oneagent
+
+
+sudo cat /proc/sys/kernel/yama/ptrace_scope
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+for i in {1..200}; do curl http://localhost:5000/checkout; done
+
+
