@@ -20,7 +20,7 @@ sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --set-monitoring-mode=infra
 sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --get-monitoring-mode
 
 FUll-Stack
-sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --set-monitoring-mode=full-stack
+sudo /opt/dynatrace/oneagent/agent/tools/oneagentctl --set-monitoring-mode=fullstack
 sudo systemctl stop oneagent
 
 sudo systemctl restart oneagent
@@ -31,9 +31,12 @@ sudo systemctl stop oneagent
 sudo systemctl status oneagent
 sudo systemctl start oneagent
 
+gunicorn -w 2 -b 0.0.0.0:5000 app:app
+
+
 
 sudo cat /proc/sys/kernel/yama/ptrace_scope
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-for i in {1..200}; do curl http://localhost:5000/checkout; done
+for i in {1..200}; do curl http://localhost; done
 
 
