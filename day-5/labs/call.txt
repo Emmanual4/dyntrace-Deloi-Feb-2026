@@ -1,0 +1,47 @@
+Normal Request
+http://localhost:3000/orders
+===================================================
+Slow API (Response Time Spike)
+http://localhost:3000/orders?slow=true
+
+Generate 50+ requests to trigger Davis anomaly detection.
+
+===================================================
+Random Error Spike
+http://localhost:3000/orders?error=true
+
+===================================================
+Database Lock Contention
+
+START TRANSACTION;
+UPDATE orders SET status='LOCKED' WHERE id=1;
+Do not commit.Then call:
+PUT http://localhost:3000/orders/1/slow
+
+Generate multiple parallel calls.
+
+Davis will detect:
+
+Lock wait increase
+
+DB slowdown
+
+API slowdown
+
+Correlated single problem
+
+===================================================
+CPU Spike
+
+http://localhost:3000/cpu
+
+Warning: This will hang the process.
+
+Davis will detect:
+
+Host CPU anomaly
+
+Service impact
+
+Restart server after test.
+===================================================

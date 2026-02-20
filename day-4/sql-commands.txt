@@ -24,6 +24,8 @@ node server.js
 
 curl -X POST http://localhost:5000/order -H "Content-Type: application/json" -d '{"product":"Laptop","quantity":10}'
 
+curl  http://localhost:5000/search
+
 
 
 
