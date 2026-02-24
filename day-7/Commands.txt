@@ -1,0 +1,10 @@
+curl -sfL https://get.k3s.io | sh -
+sudo kubectl get nodes
+sudo kubectl auth can-i create daemonsets --all-namespaces
+sudo kubectl get pods -A
+sudo kubectl create namespace dynatrace
+kubectl -n dynatrace create secret generic dynakube \
+  --from-literal="apiToken=<YOUR_API_TOKEN>" \
+  --from-literal="dataIngestToken=<YOUR_INGEST_TOKEN>"
+
+sudo kubectl -n dynatrace get secrets
